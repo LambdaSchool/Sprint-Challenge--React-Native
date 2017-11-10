@@ -1,0 +1,6 @@
+1) React Native apps are different than hybrid apps like those built with Cordova by having no webview, in other words, doesn't use HTML or CSS but instead uses pure javascript. Cordova works by using a webview to render web components while React Native renders native UI.
+2) React Native doesn't use HTML so the JSX are special components built for RN, these components replace Tags in HTML. React Native also doesn't use CSS, but has an implementation of most of the CSS features with it's own version.
+3) Some drawbacks of coding with React Native instead of in the native language of the phone is lack of third party API's that it can interact with, accessing other apps is harder(like the camera), designing for both IOS and Android at the same time can cause difficulty because of differences in how they look, and support could be limited in the future.
+4)Writing mobile apps in React Native saves time by allowing you to develop for two platforms at once. It uses web development ideas so those coming from the web have a lower barrier of entry. Using javascript allows for hot reloading speeding up development time allowing you to find errors faster and debug them without having to build often. 
+
+
