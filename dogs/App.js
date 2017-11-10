@@ -7,8 +7,10 @@ import {
   StatusBar
 } from 'react-native';
 import axios from 'axios';
+import { StackNavigator } from 'react-navigation';
+import SubBreed from './sub'
 
-export default class App extends React.Component {
+export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,16 +28,31 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View >
+      <View style={styles.container}>
+        <StatusBar hidden={true} />
         <FlatList
+          keyExtractor={item => item}
           data={Object.keys(this.state.bowwow)}
-          renderItem={({item}) => this.state.bowwow[item].length > 0 ?
-          <Text key={item}>
-          {item}
-        </Text> 
-          : <Text key={item}>{item}</Text>}
+          renderItem={({item}) => <View style={styles.items}><Text style={styles.font} key={item}> {item.toUpperCase()} </Text></View>}
         />
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+  },
+  items: {
+    height: 50,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  font: {
+    fontSize: 20
+  }
+});
