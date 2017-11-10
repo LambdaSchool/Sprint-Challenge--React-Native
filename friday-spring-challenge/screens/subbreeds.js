@@ -20,14 +20,12 @@ export class SubBreedsScreen extends Component {
 
   render() {
       const {state} = this.props.navigation;
-      console.log(state.params)
     return (
       <View style={styles.container}>
         <Text style={styles.clickable} >Sub-breeds of {state.params.breed}</Text>
         <FlatList
           data={state.params.subBreeds}
           renderItem={(dog) => {
-            console.log(dog.item, 'failure with flatlist subbreeds');
             return <Text style={styles.text2} key={dog.item}>{dog.item} {state.params.breed}</Text>}}
         />
       </View>
