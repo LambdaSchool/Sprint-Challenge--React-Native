@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "Sprint Challenge Mobile",
+    "description": "Mobile Spring Assesment and Challenge",
+    "slug": "mobilesprintchallenge",
+    "privacy": "public",
+    "sdkVersion": "22.0.0",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "primaryColor": "#E4FDE1",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#114B5F"
+    },
+    "packagerOpts": {
+      "assetExts": ["ttf", "mp4"]
+    },
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}
