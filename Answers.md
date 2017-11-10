@@ -4,7 +4,7 @@
 ### I'm a native... sort of.
 What React Native does is very different.  React Native actually uses native Android/iOS components to create genuine native apps that are sometimes comparable to native code in terms of speed and performance (with some glaring exceptions).
 
-###Syntax Differences
+### Syntax Differences
 2. There are a few differences to keep in mind when switching between React Native and React.js.  For one, the React Native components are different than the html tags used on React for the web.  Looping through lists also requires additional steps when working with React Native's list views as compared to mapping them out in React for the web.  Additionally, all text must be wrapped inside of <Text> tags or an error will be thrown.  
 
 Styling rules are also different.  The only way to style react components is through inline JavaScript.  It is not possible to link a stylesheet to individual components in React Native. 
