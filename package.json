@@ -1,0 +1,20 @@
+{
+  "name": "sprint-challenge-mobile",
+  "version": "1.0.0",
+  "description": "* Answers to your written questions will be recorded in *Answers.md*  * This is to be worked on alone but you can use outside resources. You can *reference* any old code you may have, and the React Documentation, however, please refrain from copying and pasting any of your answers. Try and understand the question and put your responses in your own words. Be as thorough as possible when explaining something.  * **Just a friendly Reminder** Don't fret or get anxious about this, this is a no-pressure assessment that is only going to help guide you here in the near future. This is NOT a pass/fail situation.  ## Start by forking and cloning this repository. ## Questions 1. What makes React Native apps different from hybrid apps built with Cordova and the like? 2. In what ways is React Native different syntactically from React? 3. What are some draw backs of writing a mobile app in React Native versus the other native languages? 4. What are some of the strengths of writing a mobile app in React Native versus the other native languages?",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/douglasxtaylor/Sprint-Challenge-Mobile.git"
+  },
+  "author": "douglasxtaylor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/douglasxtaylor/Sprint-Challenge-Mobile/issues"
+  },
+  "homepage": "https://github.com/douglasxtaylor/Sprint-Challenge-Mobile#readme"
+}
