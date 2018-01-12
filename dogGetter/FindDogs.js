@@ -1,20 +1,31 @@
 import React, { Component } from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text,
+         View, 
+         Button,
+         FlatList
+       } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import axios from 'axios'
 
 import styles from './Styles';
 
 class FindDogs extends Component {
+    state = {
+        breeds: [],
+    }
+
 
   getDogs = () => {
-      axios.get('https://dog.ceo/api/breeds/list/all ')
+      axios.get('https://dog.ceo/api/breeds/list/all')
         .then((res) => {
-            console.log(res)
-        })
+            const Breeds = res.data.message
+            this.setState({breeds: Breeds})
+            })
+            console.log(this.state)
+
         .catch((err) => {
             console.log(err)
-        })
+        });
   }
     
 
@@ -29,6 +40,23 @@ class FindDogs extends Component {
             color="#ffa500"
           />
         </View>
+        {/* <View>
+            <FlatList
+              style={styles.list}
+              data={this.state.breeds}
+              renderItem={({ breed, index}) => {
+                  return (
+                      <View>
+                          <View style={styles.listed}>
+                            <Text style={ styles.listItem }>
+                            {breed.text}
+                            </Text>
+                          </View>
+                      </View>
+                  );
+              }}
+            />
+        </View> */}
       </View>
     );
   }
