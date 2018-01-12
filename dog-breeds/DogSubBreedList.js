@@ -5,17 +5,19 @@ import {
   View,
   FlatList,
   ScrollView,
-  Button,
+  Button
 } from "react-native";
+import _ from "lodash";
+import { StackNavigator } from 'react-navigation';
 
 import axios from "axios";
 import styles from "./Styles";
 
-export default class DogList extends Component {
+export default class DogSubBreedList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dogs:{}
+      dogs: {}
     };
   }
 
@@ -26,14 +28,15 @@ export default class DogList extends Component {
       .get("https://dog.ceo/api/breeds/list/all")
       .then(res => {
         this.setState({
-          dogs : res.data.message
-          });
+          dogs: res.data.message
+        });
         console.log("dogs in console", this.state.dogs);
       })
       .catch(err => {
         console.log("dog list mounting error", err);
       });
   }
+  
 
   render() {
     return (
@@ -52,14 +55,10 @@ export default class DogList extends Component {
               return (
                 <View>
                   <View style={styles.listContainer}>
-                    <Text style={styles.textItem}>{item.toString()}</Text>
-                    <Button
-                      title="Sub Breeds"
-                      keyExtractor={item => item.message.dog}
-                      onPress={() => {
-                        this.props.navigation.navigate("DogSubBreedList");
-                      }}
-                    />
+                    <Text style={styles.textItem}>
+                      {_.upperFirst(item.toString())}
+                    </Text>
+                    
                   </View>
                 </View>
               );
