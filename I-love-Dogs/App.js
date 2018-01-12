@@ -1,21 +1,44 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { Text, View, FlatList } from 'react-native';
+import axios from 'axios';
 
-export default class App extends React.Component {
+import styles from './Styles';
+
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dogBreeds: {}
+    }
+  }
+
+  componentDidMount() {
+    console.log('componentDidMount Message');
+    axios.get('https://dog.ceo/api/breeds/list/all')
+      .then((res) => {
+        this.state.dogBreeds = res.data.message;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+        <FlatList
+          style={styles.list}
+          data={Object.keys(this.state.dogBreeds)}
+          renderItem={({ item }) => {
+            return (
+              <View>
+                <Text>{ item }</Text>
+                <Text>{ item.dogBreeds }</Text>
+              </View>
+            )
+          }}
+        />
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
