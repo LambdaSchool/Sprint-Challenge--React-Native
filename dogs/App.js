@@ -1,24 +1,23 @@
 import React from 'react';
 import axios from 'axios';
-import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
+import { Text, View, Button, FlatList, StyleSheet } from 'react-native';
 
 export default class App extends React.Component {
   state = {
     breeds: {},
-    err: ''
+    error: ''
   };
 
-  componentDidMount = () => {
+  componentDidMount() {
     axios
       .get('https://dog.ceo/api/breeds/list/all')
-      .then(res => {
-        this.state.breeds = res.data.message;
-        console.log(res.data.message.bulldog[0]);
+      .then(response => {
+        this.state.breeds = response.data.message;
       })
       .catch(err => {
         console.log(err);
       });
-  };
+  }
 
   render() {
     return (
@@ -28,7 +27,9 @@ export default class App extends React.Component {
           renderItem={({ item }) => {
             return (
               <View>
-                <Text key={item}>{item}</Text>
+                <View>
+                  <Text style={styles.text}>{item}</Text>
+                </View>
               </View>
             );
           }}
@@ -43,6 +44,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginTop: '5%',
+    marginBottom: '5%'
+  },
+  text: {
+    fontSize: 20
   }
 });
