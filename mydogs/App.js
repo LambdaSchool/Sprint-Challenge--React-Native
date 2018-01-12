@@ -1,20 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, FlatList } from 'react-native';
 import axios from 'axios';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      doglist : []
+    doglist : {},
+    error: ''
     }
   }
   componentDidMount() {
    axios.get('https://dog.ceo/api/breeds/list/all')
     .then(res => {
-      console.log(res.data.message.african);
       this.setState({
-        doglist:res.data
+        doglist : res.data.message
       })
     })
     .catch(err => {
@@ -23,9 +23,15 @@ export default class App extends React.Component {
   }
   render() {
     return (
-      <View style={styles.container}>
-        <Text>DogList </Text>
-      </View>
+      
+        <View style={styles.container}>
+          <Text>DogList </Text>
+          <FlatList 
+            data={Object.keys(this.state.doglist)}
+            renderItem={({item, index}) => {
+              <View key={item}>{item}</View>
+            }}></FlatList>      
+        </View>
     );
   }
 }
