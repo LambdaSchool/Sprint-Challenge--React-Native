@@ -28,13 +28,11 @@ export default class Home extends React.Component {
     console.log(this.state.breeds);
     return (
       <View style={styles.container}>
-        <Text>Dog List</Text>
           {this.state.breeds.map((breed) => {
             return(
               <Text>{breed}</Text>
             );
           })}
-        <Text>end of dog list</Text>
       </View>
     );
   }
