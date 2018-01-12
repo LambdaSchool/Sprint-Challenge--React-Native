@@ -19,10 +19,10 @@ export default class App extends React.Component {
   };
 
   componentDidMount() {
+    console.log("I am in componentDidMount");
     axios.get('https://dog.ceo/api/breeds/list/all')
     .then(response => {
       this.setState(prevState => {
-        let { tasks } = prevState;
         return {
           tasks: response.data,
         };
@@ -43,15 +43,16 @@ export default class App extends React.Component {
         <View style={styles.container}>
           <View>
             <Text>DOG BREEDS</Text>
+            <Text>this.state.task: {this.state.tasks}</Text>
             {this.state.error !== '' ? <Text>{this.state.error}</Text> : null}
             <FlatList
               style={styles.list}
               data={this.state.tasks}
               renderItem={({ item, index }) => {
                 return (
-                  <View key={index}>
+                  <View key={item.message}>
                     <View style={styles.listCont}>
-                      <Text style={styles.textItem}>{item.email}</Text>
+                      <Text style={styles.textItem}>{item.message}</Text>
                     </View>
                     <View style={styles.hr} />
                   </View>
