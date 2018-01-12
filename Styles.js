@@ -18,12 +18,13 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     fontSize: 16,
     fontWeight: 'bold',
-    width: '30%'
+    width: '100%'
   },
   subTextItem: {
     paddingLeft: 10,
     paddingRight: 10,
     fontSize: 14,
+    flexDirection: 'row',
   },
   inputStyles: {
     borderWidth: 1,

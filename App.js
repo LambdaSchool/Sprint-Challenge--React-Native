@@ -8,12 +8,7 @@ class Home extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.header}>Welcome to your Dog List</Text>
-        <Button
-          title="Dog List"
-          onPress={() => {
-            this.props.navigation.navigate('DogList');
-          }}
-        />
+        <DogList />
       </View>
     );
   }

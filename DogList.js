@@ -95,21 +95,14 @@ export default class DogList extends React.Component {
           data={this.state.dogs}
           renderItem={({ item, index }) => {
             const key = Object.keys(item)[0];
-            const value = item[key];
+            const values = item[key];
             // if (value.length) console.log(`breed: ${key}  sub breeds: ${value}`);
             return (
-              <View key={key}>
+              <View>
                 <View style={styles.listCont}>
-                  {/* <Text style={styles.textItem}>{key}</Text> */}
-                  <FlatList keyExtractor={this._keyExtractorSubBreed} style={styles.subList}
-                    data={value}
-                    renderItem={({ item, index }) => {
-                      console.log(`breed: ${key}  sub breed: ${item}   index: ${index}`);
-                      return
-                      <View>
-                        <Text style={styles.subTextItem}>{item}</Text>
-                      </View>
-                    }} />
+                  <Text style={styles.textItem}>{values.length ?  key + ' sub-breeds: ' : key}
+                    <Text style={styles.subTextItem} >{values.map(sub => sub).join(',')}</Text>
+                  </Text>
                 </View>
                 <View style={styles.hr} />
               </View>
