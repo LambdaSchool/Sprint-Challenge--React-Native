@@ -1,13 +1,38 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import axios from 'axios';
+import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
 
 export default class App extends React.Component {
+  state = {
+    breeds: {},
+    err: ''
+  };
+
+  componentDidMount = () => {
+    axios
+      .get('https://dog.ceo/api/breeds/list/all')
+      .then(res => {
+        this.state.breeds = res.data.message;
+        console.log(res.data.message.bulldog[0]);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+        <FlatList
+          data={Object.keys(this.state.breeds)}
+          renderItem={({ item }) => {
+            return (
+              <View>
+                <Text key={item}>{item}</Text>
+              </View>
+            );
+          }}
+        />
       </View>
     );
   }
@@ -18,6 +43,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
+    justifyContent: 'center'
+  }
 });
