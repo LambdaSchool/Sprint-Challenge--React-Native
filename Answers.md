@@ -1,0 +1,8 @@
+###What makes React Native apps different from hybrid apps built with Cordova and the like?
+*Answer: React Native differ from Cordova when it comes to how transparent it is to be able to bring codes from a web-based project and be able to use it on mobile app project.  React Native does not come that easy, while certain philosophies do are similiar. For example, how styling works on React Native differ from ReactJS.*
+###In what ways is React Native different syntactically from React?
+*Answer: How React Native and ReactJS differeReact Native is a framework while ReactJS is a library.  Another thing to consider is React Native does not use HTML to render the App.  For example, instead of using div tags, React Native allows View tags to be used to allow for organizing the scope of the app.*
+###What are some draw backs of writing a mobile app in React Native versus the other native languages?
+*Answer: One of the drawbacks discussed was how you can't use the code from ReactJS and apply to the React-Native project.  Cordova allows developers to build app with html tags while developers would have to learn how render to app using View tags versus div tags and Text tags versus tags such as li, ul, p tags.*
+###What are some of the strengths of writing a mobile app in React Native versus the other native languages?
+*Answer:React-Native gives you the feel of "Out of the Box" ready.  Also, the native term in React-Native means that the mobile application would feel like a mobile phone app.  React-Native framework makes it easier for developers to develop the app without needing additional effort to give it a native feel comparing to Cordova.*
