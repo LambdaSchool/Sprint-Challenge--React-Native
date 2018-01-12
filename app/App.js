@@ -22,14 +22,13 @@ export default class App extends React.Component {
   };
 
   render() {
-    console.log(this.state.breeds);
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+        <Text style={styles.header}>Whole lotta dogs</Text>
         <FlatList
           style={styles.list}
           data={Object.keys(this.state.breeds)}
-          renderItem={({ item, index }) => {
+          renderItem={({ item }) => {
             return (
               <View>
                 <View style={styles.listCont}>

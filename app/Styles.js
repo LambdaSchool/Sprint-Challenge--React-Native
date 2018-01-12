@@ -19,6 +19,11 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     fontSize: 14
+  },
+  header: {
+    marginTop: 30,
+    color: '#000000',
+    fontSize: 20,
   }
 });
 
