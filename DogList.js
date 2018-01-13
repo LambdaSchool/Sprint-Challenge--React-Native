@@ -8,9 +8,11 @@ import {
   Button,
   TextInput
 } from 'react-native';
-
+import { StackNavigator } from 'react-navigation';
 import styles from './Styles';
 import axios from 'axios';
+import Routes from './App'
+import BreedList from './BreedList';
 
 export default class DogList extends React.Component {
   state = {
@@ -20,7 +22,7 @@ export default class DogList extends React.Component {
   };
 
   componentDidMount() {
-    console.log('is Mounted');
+    console.log('DogList is Mounted');
     const promise = axios.get('https://dog.ceo/api/breeds/list/all', {});
     promise
       .then(res => {
@@ -77,6 +79,10 @@ export default class DogList extends React.Component {
       return { dogs };
     });
   };
+  show = (params) => {
+    console.log(`breed: ${params.breed} subBreed  ${params.subBreed}`);
+    this.props.navigation.navigate('BreedList', params);
+  };
   _keyExtractor = (item, index) => Object.keys(item)[0];
   _keyExtractorSubBreed = (item, index) => item;
   render() {
@@ -94,14 +100,22 @@ export default class DogList extends React.Component {
           style={styles.list}
           data={this.state.dogs}
           renderItem={({ item, index }) => {
-            const key = Object.keys(item)[0];
-            const values = item[key];
-            // if (value.length) console.log(`breed: ${key}  sub breeds: ${value}`);
+            const dkey = Object.keys(item)[0];
+            const values = item[dkey];
+           // console.log(`breed: ${dkey}  sub breeds: ${values}`);
             return (
               <View>
                 <View style={styles.listCont}>
-                  <Text style={styles.textItem}>{values.length ?  key + ' sub-breeds: ' : key}
-                    <Text style={styles.subTextItem} >{values.map(sub => sub).join(',')}</Text>
+                  <Text style={styles.textItem}>{values.length ?
+                    <Text onPress={() => this.show({breed: dkey, subBreed: null })}>{dkey + ' sub-breeds: '}</Text> :
+                    <Text onPress={() => this.show({breed: dkey, subBreed: null })}>{dkey}</Text>}
+                    <Text style={styles.subTextItem}>{
+                      values.map((sub, i) => (
+                        <Text key={sub} onPress={() => this.show({ breed: dkey, subBreed: sub })}>
+                          {i < values.length - 1 ? sub + ',' : sub}
+                        </Text>))
+                    }
+                    </Text>
                   </Text>
                 </View>
                 <View style={styles.hr} />
