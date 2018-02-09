@@ -6,9 +6,7 @@ import { StackNavigator } from 'react-navigation';
 const apiUrl = 'https://dog.ceo/api/breeds/list/all'
 
 class Breeds extends Component{
-    static navigationOptions = {
-        header: null,
-    }
+   
     constructor(props){
         super(props);
         this.state = {
@@ -16,7 +14,6 @@ class Breeds extends Component{
         }
     }
     async componentDidMount(){
-        console.log(this.props)
         try{
             let response = await axios.get(`${apiUrl}`)
             let breeds = response.data.message;
@@ -33,7 +30,6 @@ class Breeds extends Component{
         } catch (error){
             console.log(error)
         }
-        console.log(`My props are ${this.props}`)
         this.props.navigation.navigate('Subbreeds');
     }
    

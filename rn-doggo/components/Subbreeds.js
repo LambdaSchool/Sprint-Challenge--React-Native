@@ -3,9 +3,7 @@ import { StyleSheet, Text, View, AsyncStorage, ScrollView, FlatList} from 'react
 import {StackNavigator} from 'react-navigation'
 
 class Subbreeds extends Component{
-    static navigationOptions = {
-        header: null,
-    }
+   
     constructor(props){
         super(props);
         this.state = {
@@ -15,9 +13,7 @@ class Subbreeds extends Component{
     }
     
     async componentDidMount(){
-        console.log('I am subbreed triggered')
         let data = await AsyncStorage.getItem('Subbreeds');
-        console.log(data);
         let subbreeds = JSON.parse(data)
         this.setState({
             subbreeds
