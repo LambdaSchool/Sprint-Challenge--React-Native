@@ -1,13 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StackNavigator } from 'react-navigation';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import DogBreeds from './DogBreeds';
 
-export default class App extends React.Component {
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+  };
+
   render() {
+    const { navigate }  = this.props.navigation;
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+      <View style={container}>
+        <Text style={homeHeader}>This is a list of Dog Breeds</Text>
+        <View style={buttonWrapper}>
+          <Button title="Get Dog Breeds" onPress={() => navigate('DogBreeds')}/>
+        </View>
       </View>
     );
   }
@@ -16,8 +24,29 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'skyblue',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
+  homeHeader: {
+    fontSize: 25,
+    color: 'white'
+  },
+  buttonWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'center'
+  }
 });
+
+const { container, homeHeader, buttonWrapper } = styles;
+
+const Routes = StackNavigator({
+  Home: { 
+    screen: Home 
+  },
+  DogBreeds: {
+    screen: DogBreeds,
+  }
+});
+
+export default Routes;
