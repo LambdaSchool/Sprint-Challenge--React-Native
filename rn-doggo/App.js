@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import Expo from 'expo';
 import styles from './Styles';
 
 import Dogs from './Dogs';
