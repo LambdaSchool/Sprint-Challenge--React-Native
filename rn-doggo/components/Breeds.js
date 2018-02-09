@@ -10,12 +10,12 @@ export default class Breeds extends React.Component {
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         Axios
             .get('https://dog.ceo/api/breeds/list/all')
             .then(res => {
                 this.setState({ breeds: res.data.message });
-                console.log(this.state.breeds);
+                // console.log(this.state.breeds);
             })
             .catch(error => {
                 console.log('There was an error fetching data: ', error);
@@ -23,12 +23,21 @@ export default class Breeds extends React.Component {
     };
 
     render() {
+        const breedsNames = Object.keys(this.state.breeds);
+        //console.log(breedsNames);
         return (
             <View style={container}>
                 <Text>Doggo Breeds Go Here</Text>
                 <FlatList 
-                    data={this.state.breeds}
-                    renderItem={({ item }) => <Text>{item}</Text>}
+                    data={breedsNames}
+                    renderItem={({ item, index }) => {
+                        return (
+                            <View>
+                                <Text key = {item+index}>{item}</Text>
+                            </View>
+                        );
+                    }}
+
                 />
             </View>
         );
