@@ -54,13 +54,17 @@ class Breeds extends Component {
           keyExtractor={ (item, index) => index }
           renderItem={
             ({ item }) => {
+
+              const breed = item[0].toUpperCase() + item.substr(1);
               
               return (
                 <TouchableOpacity
-                  onPress={ () => this.showSubBreeds(item) }
-                  >
+                  style={ styles.listItem }
+                  onPress={ () => this.showSubBreeds(breed) } >
 
-                  <Text breed={ item }>{ item }</Text>
+                  <Text style={ styles.listItemText } breed={ breed }>
+                  - { breed }
+                  </Text>
 
                 </TouchableOpacity>
               );
@@ -83,6 +87,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  listItem: {
+    minWidth: '100%',
+    borderTopWidth: 1,
+    borderTopColor: '#fff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
+    backgroundColor: '#eee'
+  },
+  listItemText: {
+    fontSize: 18,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+  }
 });
 
 export default Breeds;

@@ -22,7 +22,7 @@ class SubBreeds extends Component {
 
     const { breed } = this.props.navigation.state.params;
 
-    const api = `https://dog.ceo/api/breed/${ breed }`;
+    const api = `https://dog.ceo/api/breed/${ breed.toLowerCase() }`;
 
     axios
       .get(`${ api }/images/random`)
@@ -65,13 +65,16 @@ class SubBreeds extends Component {
           keyExtractor={ (item, index) => index }
           renderItem={
             ({ item }) => {
+
+              const subBreed = item[0].toUpperCase() + item.substr(1);
               
               return (
                 <TouchableOpacity
-                  // onPress={  }
-                  >
+                  style={ styles.listItem }>
 
-                  <Text>{ item }</Text>
+                  <Text style={ styles.listItemText }>
+                    - { subBreed }
+                  </Text>
 
                 </TouchableOpacity>
               );
@@ -97,6 +100,19 @@ const styles = StyleSheet.create({
   breedImage: {
     width: '100%',
     height: 250
+  },
+  listItem: {
+    minWidth: '100%',
+    borderTopWidth: 1,
+    borderTopColor: '#fff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
+    backgroundColor: '#eee'
+  },
+  listItemText: {
+    fontSize: 18,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
   }
 });
 
