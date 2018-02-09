@@ -3,19 +3,22 @@ import axios from "axios";
 
 import { StyleSheet, Text, View, ScrollView, FlatList } from "react-native";
 
-export default class DogList extends React.Component {
+export default class SubBreeds extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dogBreeds: [],
-    };
+      subBreeds: [],
+
+      };
   }
+  
   componentDidMount() {
+      const breedName = this.props.navigation.state.params
     axios
-      .get("https://dog.ceo/api/breeds/list/all")
+     .get(`https://dog.ceo/api/breed/${breedName}/list`)
       .then(response => {
         this.setState({
-          dogBreeds: response.data.message
+          subBreeds: response.data.message
         });
       })
       .catch(err => {
@@ -26,17 +29,13 @@ export default class DogList extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.listHeader}>Dog Breeds: A List </Text>
+        <Text style={styles.listHeader}> Sub Breeds </Text>
         <ScrollView>
           <FlatList
-            data={Object.keys(this.state.dogBreeds)}
+            data={Object.keys(this.state.subBreeds)}
             renderItem={({ item }) => (
               <View>
-                <Text key={item}
-                onPress={() => {
-                    this.props.navigation.navigate("SubBreeds");
-                }}>
-                {item}</Text>
+                <Text key={item}>{item}</Text>
               </View>
             )}
           />
@@ -49,11 +48,11 @@ export default class DogList extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "pink",
+    backgroundColor: "orange",
     alignItems: "center",
     justifyContent: "center"
   },
   listHeader: {
-      fontSize:30
+    fontSize: 30
   }
 });

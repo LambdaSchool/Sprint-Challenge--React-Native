@@ -4,14 +4,15 @@ import { StackNavigator } from "react-navigation";
 import { StyleSheet, Text, View, Button } from "react-native";
 
 import DogList from "./doglist";
+import SubBreeds from "./subbreeds";
 
 class Home extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text> Doggie App </Text>
+        <Text style={styles.header}>Doggie App </Text>
         <Button
-          title={"Dog List"}
+          title={"Click to see a List of Dog Breeds"}
           onPress={() => {
             this.props.navigation.navigate("DogList");
           }}
@@ -24,14 +25,18 @@ class Home extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "yellow",
     alignItems: "center",
     justifyContent: "center"
+  },
+  header: {
+    fontSize:50
   }
 });
 
 const Routes = StackNavigator({
   Home: { screen: Home },
-  DogList: { screen: DogList }
+  DogList: { screen: DogList },
+  SubBreeds: { screen: SubBreeds},
 });
 export default Routes;
