@@ -1,0 +1,19 @@
+{
+  "name": "sprint",
+  "version": "1.0.0",
+  "description": "* Answers to your written questions will be recorded in *Answers.md* \r * This is to be worked on alone but you can use outside resources. You can *reference* any old code you may have, and the React Documentation, however, please refrain from copying and pasting any of your answers. Try and understand the question and put your responses in your own words. Be as thorough as possible when explaining something. \r * **Just a friendly Reminder** Don't fret or get anxious about this, this is a no-pressure assessment that is only going to help guide you here in the near future. This is NOT a pass/fail situation. \r ## Start by forking and cloning this repository.\r ## Questions\r 1. What makes apps built with React Native different from hybrid style apps built with Cordova/Ionic?\r 1. In what ways is React Native different syntactically from React?\r 1. What are some of the strengths of writing a mobile app in React Native versus the other native languages? [React Blog](https://reactjs.org/blog/2015/03/26/introducing-react-native.html)\r 1. What is are some differences between `localStorage` and `AsyncStorage`? What are some similarities between the two?",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Capril1042/Sprint-Challenge--React-Native.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Capril1042/Sprint-Challenge--React-Native/issues"
+  },
+  "homepage": "https://github.com/Capril1042/Sprint-Challenge--React-Native#readme"
+}
