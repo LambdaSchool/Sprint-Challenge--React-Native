@@ -36,7 +36,7 @@ class DogBreeds extends React.Component {
                 <ScrollView>
                     <FlatList
                         data={Object.keys(this.state.dogs)}
-                        renderItem={({item}) => {
+                        renderItem={({item, index}) => {
                             return (
                                 <View>
                                     <Text>
