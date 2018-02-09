@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native';
 
-export default class Breeds extends React.Component {
+export default class Voting extends React.Component {
     render() {
         return (
             <View style={container}>
-                <Text>Doggo Breeds Go Here</Text>
+                <Text>Doggo Voting Goes Here</Text>
             </View>
         );
     }

@@ -1,16 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import Breeds from './components/Breeds';
+import Voting from './components/Voting';
 
-class Home extends React.Component {
-  render() {
-    return (
-      <View style={container}>
-        <Text>Welcome to Puppy v. Puppy</Text>
-        <Text>It's Sort of Like Tinder, But You Vote on Cute Doggos</Text>
-      </View>
-    );
-  }
+const Home = props => {
+  return (
+    <View style={container}>
+      <Text>Welcome to Puppy v. Puppy</Text>
+      <Text>It's Sort of Like Tinder, But You Vote on Cute Doggos</Text>
+      <TouchableOpacity onPress={() => props.navigation.navigate('breeds')}>
+        <Text>See All Dog Breeds</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => props.navigation.navigate('voting')}>
+        <Text>Vote On Cute Doggos</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -26,5 +32,6 @@ const { container } = styles;
 const Routes = StackNavigator({
   home: { screen: Home },
   breeds: { screen: Breeds },
+  voting: { screen: Voting },
 })
 export default Routes;
