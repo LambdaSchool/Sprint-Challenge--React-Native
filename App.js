@@ -6,6 +6,8 @@
 // data using axios. when that's working add functionality from listview to support infinite scrolling and pull
 // to refresh (https://dev-blog.apollodata.com/loading-data-into-react-natives-flatlist-9646fa9a199b)
 
+// see also http://technoetics.in/simple-flatlist-example-react-native/?utm_source=hashnode.com
+
 import React, { Component } from 'react';
 import { Flatlist, StyleSheet, Text, View } from 'react-native';
 
