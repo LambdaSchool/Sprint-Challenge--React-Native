@@ -1,8 +1,20 @@
 ## Questions
 1. What makes apps built with React Native different from hybrid style apps built with Cordova/Ionic?
+First, let me write a little bit about what I've found out looking into hybrid vs. native apps. Hybrid apps use software (such as Cordova) to convert an HTML5 app (written in ReactJS, Angular, etc.) into something that seems native--it allows you to invoke native functionality. Ionic is based off Cordova, which allows you to build on top of an Angular app, it uses Apache Cordova to package itself for mobile platforms. A hybrid app can run on multiple platforms, such as Android and iOS.
+A native app is built for a specific operating system and can only be accessed from that specific app store. That means there has to be separate code written for each operating system that you want to support. That can be more expensive if you have multiple codes to maintain. However, it can make for a better user experience since it is written specifically, you know exactly what the user's experience will be. 
+In a hybrid app, since there is one source code it is easier to maintain, but you cannot possibly account for every single operating system a person might try to use, different screen sizes--likely some users might fall through the cracks. 
+The interesting thing about React-Native is that it allows for building cross-platform apps. That makes it a bit of a game-changer.
+
 
 2. In what ways is React Native different syntactically from React?
+React-Native, unlike ReactJS, doesn't get rendered in an HTML page. This means that it is not made from web-elements and cannot be styled in the same way that ReactJS is. Instead of using CSS, there is a Stylesheet that one sets up and uses--it looks somewhat similar, but is not the same as CSS. 
+Instead of using JSX rendering options that are easily outputted as HTML elements, we use Views that are converted to a native script such as Java. We use elements such as View, Text, TextInput, Image, TouchableOpacity, whereas with JSX elements we would see div, span, p, img and button tags. 
+In some ways things are not very different. We still use functional or class-based components, still use import and export statements, and can organize our code into smaller component pieces in ways that we used with React and React-Redux.
 
 3. What are some of the strengths of writing a mobile app in React Native versus the other native languages? React Blog
+The benefit of React-Native is that it allows for writing cross-platform mobile apps. Most native languages allow for writing for one particular operating system. That is time and cost ineffective, because it means supporting and maintaining multiple code bases, one for each operating system. If one set of code is pushed with new changes and another is not, then users will not have a consistent experience across different platforms. 
+Having one source code, React-Native, that can support across different platforms with only some small coded differences for each operating system, can help to maintain that equal user experience, intentional design and programming that one might not find with hybrid apps, and keep costs down as there is less code to maintain.
 
 4. What is are some differences between localStorage and AsyncStorage? What are some similarities between the two?
+localStorage accesses a Storage object for the Document. It is specific to the protocol of the page. This data has no expiration time--unlike session storage, localStorage is not cleared automatically when the page session ends. Methods return a JSON object.
+AsyncStorage is a persistent storage system global to the React-Native app. Data is stored in Android in RocksDB or SQLite, and on iOS in a serialized dictionary or separate files. Then when requests are made to AsyncStorage an API request is performed. The API methods return a promise. Async methods allow for callbacks in order to handle errors.
