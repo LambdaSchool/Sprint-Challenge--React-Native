@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, ActivityIndicator, FlatList } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, FlatList, AsyncStorage } from 'react-native';
 import axios from 'axios';
+import HyperLink from 'react-native-hyperlink';
 
 const api = `https://dog.ceo/api/breeds/list/all`;
 
@@ -24,14 +25,19 @@ export default class Dogs extends React.Component {
     try {
       const response = await axios.get(api);
       const data = response.data.message;
-      console.log(data);
       const dogs = Object.keys(data).map((breed, i) => {
         return {
           breed,
-          subBreeds: data[breed].map((sB, j) => sB.key =`${breed}-sB${j}`),
+          subBreeds: data[breed].map((subBreed, j) => {
+            return {
+              subBreed,
+              key: `${breed}-${subBreed}`
+            }
+          }),
           key: `breed${i}`
         }
       });
+      AsyncStorage.setItem('dogs', JSON.stringify(dogs));
       this.setState({dogs, error: undefined})
     } catch(error) {
       this.setState({dogs: [], error})
@@ -44,11 +50,25 @@ export default class Dogs extends React.Component {
 
   renderFetchingSpinner = () => <View style={styles.container}><ActivityIndicator size="large" color="#0000ff" /></View>
   
+  viewSubBreeds = async (subBreeds) => {
+    await AsyncStorage.setItem('subBreeds', JSON.stringify(subBreeds));
+    this.props.navigation.navigate('SubBreeds');
+  }
+
   renderDogs = (dogs) => (
     <View style={styles.container}>
       <FlatList 
         data={dogs}
-        renderItem={({item}) => { console.log(item); return <Text>{item.breed}</Text>}}
+        renderItem={({item}) => { 
+          if (!item.subBreeds.length) return <Text>{item.breed}</Text>
+          return (
+            <Text 
+              style={{color: 'blue'}} 
+              onPress={() => this.viewSubBreeds(item.subBreeds)}
+            >{item.breed}
+            </Text>
+          )
+        }}
       />
     </View>
   )
