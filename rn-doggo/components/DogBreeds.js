@@ -1,39 +1,38 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, FlatList, StyleSheet, ScrollView, ListItem } from 'react-native';
 import axios from 'axios';
 
 class DogBreeds extends Component {
-  constructor () {
+  constructor() {
     super();
     this.state = {
-      dogBreeds: []
+      dogBreeds: {},
     };
   }
 
-  componentDidMount () {
+  componentDidMount() {
     axios
       .get('https://dog.ceo/api/breeds/list/all')
-      .then(({ data }) => {
-        this.setState({
-          dogBreeds: data.message
-        });
+      .then(res => {
+        console.log(res.data.message);
+        this.setState({ dogBreeds: res.data.message });
       })
-      .catch(err => {
-        console.log(err);
+      .catch(error => {
+        console.log('There was an error fetching data', error);
       });
   }
 
-  render () {
+  render() {
+    const breeds = Object.keys(this.state.dogBreeds);
     return (
       <View>
+        <Text>Dog Breeds</Text>
         <FlatList
-          data={this.state.dogBreeds}
-          extraData={thi.state}
-          keyExtractor={({ item, index }) => item.id}
+          data={breeds}
           renderItem={({ item, index }) => {
             return (
-              <View key={item.key} id={index}>
-                {item}
+              <View>
+                <Text key={item + index}>{item}</Text>
               </View>
             );
           }}
@@ -42,3 +41,5 @@ class DogBreeds extends Component {
     );
   }
 }
+
+export default DogBreeds;
