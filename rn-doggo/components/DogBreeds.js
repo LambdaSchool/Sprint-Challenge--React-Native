@@ -14,7 +14,6 @@ class DogBreeds extends Component {
     axios
       .get('https://dog.ceo/api/breeds/list/all')
       .then(res => {
-        console.log(res.data.message);
         this.setState({ dogBreeds: res.data.message });
       })
       .catch(error => {
