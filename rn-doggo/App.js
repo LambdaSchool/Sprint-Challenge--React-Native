@@ -12,17 +12,21 @@ export default class App extends React.Component {
   }
   componentDidMount = () => {
     axios.get('https://dog.ceo/api/breeds/list/', {
-      }).then(res => {
-        res.json()
-      }).then(responseJson => {
+      })
+      .then(res => {
+        res.json();
+      })
+      .then(responseJson => {
         console.log(responseJson); 
         this.setState({
           name: responseJson
         });
-      }).catch(err => {
-        console.error(err)
+      })
+      .catch(err => {
+        console.error(err);
         this.setState({error: 'Error Fetching List'});
-      }).catch(err => {
+      })
+      .catch(err => {
         console.log(err);
       });
     }
@@ -37,10 +41,10 @@ export default class App extends React.Component {
               <Text style={styles.listItem} >
               {item.name}
               </Text>
-              </View>  
-              );
-           }}
-        />
+            </View>  
+            );
+          }}
+          />
         </View>
       )
     }
