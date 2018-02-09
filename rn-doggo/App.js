@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import Breed from './components/Breed';
 
 export default class Dogs extends Component {
+
+  static navigationOptions = {
+    title: 'Dogs'
+  }
+  
   render() {
     return (
       <View style={styles.container}>
         <Text>Welcome to the Dog Show</Text>
-
-        <Text></Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+        <Text>Please select a breed of your choice</Text>
+        <Button
+          title={'Breed'}
+          onPress={() => {
+            this.props.navigation.navigate('Breed')
+          }}
+        />
       </View>
     );
   }
@@ -23,3 +33,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+  const Routes = StackNavigator({
+    Dogs: { screen: Dogs },
+    Breed: { screen: Breed },
+  })
+
+  export default Routes;
