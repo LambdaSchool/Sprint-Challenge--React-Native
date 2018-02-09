@@ -11,7 +11,7 @@ export default class SubBreeds extends React.Component {
     }
 
     componentDidMount() {
-        const subBreeds = this.props.subBreeds;
+        const subBreeds = this.props.navigation.state.params.subBreeds;
         this.setState({ subBreeds });
     }
 
