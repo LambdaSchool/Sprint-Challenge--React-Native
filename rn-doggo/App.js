@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Breeds from './components/Breeds';
+import SubBreeds from './components/SubBreeds';
 import Voting from './components/Voting';
 
 const Home = props => {
@@ -42,6 +43,7 @@ const { container, button, centeredText } = styles;
 const Routes = StackNavigator({
   home: { screen: Home },
   breeds: { screen: Breeds },
+  subBreeds: { screen: SubBreeds },
   voting: { screen: Voting },
 })
 export default Routes;

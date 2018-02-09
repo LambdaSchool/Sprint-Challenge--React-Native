@@ -24,21 +24,29 @@ export default class Breeds extends React.Component {
 
     render() {
         const breedsNames = Object.keys(this.state.breeds);
-        //console.log(breedsNames);
+        console.log(this.state.breeds);
         return (
             <View style={container}>
                 <Text>Doggo Breeds Go Here</Text>
+            { this.state.breeds !== null ? 
                 <FlatList 
                     data={breedsNames}
                     renderItem={({ item, index }) => {
                         return (
                             <View>
-                                <Text key = {item+index}>{item}</Text>
+                                { this.state.breeds[item].length > 0 ?
+                                    <TouchableOpacity onPress={ () => this.props.navigation.navigate('subBreeds', { subBreeds: this.state.breeds[item] }) }>
+                                        <Text key={item+index} style={breedName_extra}>{item}</Text>
+                                    </TouchableOpacity> 
+                                    : 
+                                        <Text key={item+index} style={breedName}>{item}</Text>
+                                }
+
                             </View>
                         );
                     }}
 
-                />
+                /> : <Text>No Breeds</Text> }
             </View>
         );
     }
@@ -51,18 +59,14 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    breedName :{
+        margin: 3,
+        padding: 2,
+    },
+    breedName_extra :{
+        margin: 3,
+        padding: 2,
+        color: 'blue',
+    },
   });
-  const { container } = styles;
-
-  /*
-        <FlatList
-                data = {this.state.breeds}
-                renderItem = {({ breed, index }) => {
-                    return(
-                        <View key={breed}>
-                            <Text>{breed[0]}</Text>
-                        </View>
-                    );
-                }}
-                />
-                */
+  const { container, breedName, breedName_extra } = styles;
