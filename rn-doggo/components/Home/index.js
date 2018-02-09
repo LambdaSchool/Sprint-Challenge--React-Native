@@ -20,6 +20,7 @@ export default class Home extends Component {
     handleSearch = () => {
         let subBreed = this.state.subBreed;
         this.props.navigation.navigate('SubBreeds', { subBreed });
+        this.setState({ subBreed: '' })
     }
 
     render() {
@@ -30,6 +31,7 @@ export default class Home extends Component {
                     <Text style={Styles.instructions}>Search By Breed Name</Text>
                     <View style={Styles.formWrapper}>
                         <TextInput
+                            value={this.state.subBreed}
                             placeholder={'Search by Breed Name'}
                             style={Styles.inputField}
                             underlineColorAndroid='transparent'
