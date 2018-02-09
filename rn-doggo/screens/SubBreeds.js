@@ -11,19 +11,12 @@ import {
 import axios from 'axios';
 
 class SubBreeds extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      breed: props.navigation.state.params.breed,
-      breedImage: null,
-      subBreeds: null
-    };
-
-  }
-
   
+  state = {
+    breed: null,
+    breedImage: null,
+    subBreeds: null
+  };
 
   componentDidMount() {
 
@@ -36,38 +29,56 @@ class SubBreeds extends Component {
       .then((response) => {
         
         const breedImage = response.data.message;
+        
+        axios
+          .get(`${ api }/list`)
+          .then((res) => {
 
-        this.setState({
-          breed,
-          breedImage,
-        });
+            const subBreeds = res.data.message;
+            
+            this.setState({
+              breed,
+              breedImage,
+              subBreeds,
+            });
+
+          })
+          .catch((error) => console.log(error));
         
       })
       .catch((error) => console.log(error));
-        
-    axios
-      .get(`${ api }/list`)
-      .then((response) => {
 
-        const subBreeds = response.data.message;
-        
-        this.setState({
-          subBreeds,
-        });
-
-      })
-      .catch((error) => console.log(error));
-      
   }
 
   render() {
-    
-    console.log(this.state)
 
     return (
       <View style={styles.container}>
       
-        <Image source={{ uri: this.state.breedImage }} />
+        <Image 
+          style={ styles.breedImage }
+          source={{ uri: this.state.breedImage }}
+          />
+
+        <FlatList
+          data={ this.state.subBreeds }
+          keyExtractor={ (item, index) => index }
+          renderItem={
+            ({ item }) => {
+              
+              return (
+                <TouchableOpacity
+                  // onPress={  }
+                  >
+
+                  <Text>{ item }</Text>
+
+                </TouchableOpacity>
+              );
+
+            }
+          }
+          />
 
       </View>
     );
@@ -83,6 +94,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  breedImage: {
+    width: '100%',
+    height: 250
+  }
 });
 
 export default SubBreeds;
