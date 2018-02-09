@@ -9,8 +9,17 @@ export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            subBreed: '',
 
         }
+    }
+
+    handleText = (text) => {
+        this.setState({ subBreed: text })
+    }
+    handleSearch = () => {
+        let subBreed = this.state.subBreed;
+        this.props.navigation.navigate('SubBreeds', { subBreed });
     }
 
     render() {
@@ -20,8 +29,16 @@ export default class Home extends Component {
                 <View style={Styles.pageDivision}>
                     <Text style={Styles.instructions}>Search By Breed Name</Text>
                     <View style={Styles.formWrapper}>
-                        <TextInput placeholder={'Search by Breed Name'} style={Styles.inputField} underlineColorAndroid='transparent' />
-                        <Button style={Styles.button} title={'Search'} onPress={() => { console.log('Search Was pressed') }} />
+                        <TextInput
+                            placeholder={'Search by Breed Name'}
+                            style={Styles.inputField}
+                            underlineColorAndroid='transparent'
+                            onChangeText={(text) => this.handleText(text)}
+                        />
+                        <Button
+                            style={Styles.button}
+                            title={'Search'}
+                            onPress={() => this.handleSearch()} />
                     </View>
                 </View>
                 <View style={Styles.pageDivision}>
