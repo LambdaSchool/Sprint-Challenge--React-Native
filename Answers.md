@@ -13,4 +13,4 @@
 
 4. What is are some differences between `localStorage` and `AsyncStorage`? What are some similarities between the two?
 
-    
+    The main difference is that Async is built into Native, persistent and global to the app, while Local is used only to persist in a web browser during a particular session. Both are used to store data within a Native app.
