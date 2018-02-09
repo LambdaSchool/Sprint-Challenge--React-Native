@@ -15,7 +15,6 @@ export default class Breeds extends React.Component {
             .get('https://dog.ceo/api/breeds/list/all')
             .then(res => {
                 this.setState({ breeds: res.data.message });
-                // console.log(this.state.breeds);
             })
             .catch(error => {
                 console.log('There was an error fetching data: ', error);
@@ -24,7 +23,6 @@ export default class Breeds extends React.Component {
 
     render() {
         const breedsNames = Object.keys(this.state.breeds);
-        console.log(this.state.breeds);
         return (
             <View style={container}>
                 <Text>Doggo Breeds Go Here</Text>
@@ -32,10 +30,11 @@ export default class Breeds extends React.Component {
                 <FlatList 
                     data={breedsNames}
                     renderItem={({ item, index }) => {
+                        const subBreeds = this.state.breeds[item];
                         return (
                             <View>
                                 { this.state.breeds[item].length > 0 ?
-                                    <TouchableOpacity onPress={ () => this.props.navigation.navigate('subBreeds', { subBreeds: this.state.breeds[item] }) }>
+                                    <TouchableOpacity onPress={ () => this.props.navigation.navigate('subBreeds', { subBreeds: subBreeds }) }>
                                         <Text key={item+index} style={breedName_extra}>{item}</Text>
                                     </TouchableOpacity> 
                                     : 

@@ -5,16 +5,23 @@ import Axios from 'axios';
 export default class SubBreeds extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            subBreeds: [],
+        }
+    }
+
+    componentDidMount() {
+        const subBreeds = this.props.subBreeds;
+        this.setState({ subBreeds });
     }
 
     render() {
-        const breedsNames = Object.keys(this.state.breeds);
-        //console.log(breedsNames);
+        console.log(this.state.subBreeds);
         return (
             <View style={container}>
                 <Text>Doggo Sub-Breeds Go Here</Text>
                 <FlatList 
-                    data={this.props}
+                    data={this.state.subBreeds}
                     renderItem={({ item, index }) => {
                         return (
                             <View>
