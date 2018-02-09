@@ -1,14 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Breeds from './components/Breeds'
 import Subbreeds from './components/Subbreeds'
-import {StackNavigator} from 'react-navigation'
+import { StackNavigator } from 'react-navigation'
 
-class App extends React.Component {
+class Home extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Breeds />
+      <View style={container}>
+        <TouchableOpacity style={button} onPress={() => this.props.navigation.navigate('Breeds')}>
+            <Text style={buttonText}>Start</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -21,15 +23,29 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  button: {
+    flex:0,
+    width: '45%',
+    height:50,
+    backgroundColor: '#e50914',
+    alignItems: 'center',
+    justifyContent: 'center',
+},
+buttonText :{
+    color:'white',
+    fontSize:18
+},
 });
-
+const {button, buttonText, container} = styles
 
 export default StackNavigator({
-  App: {
-    screen: App,
+  Home: {
+    screen: Home,
   },
   Breeds: {
    screen: Breeds
  },
- 
-})
+ Subbreeds:{
+  screen: Subbreeds
+ }
+ })

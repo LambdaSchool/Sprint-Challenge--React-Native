@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, FlatList, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, FlatList, ScrollView, TouchableOpacity, AsyncStorage } from 'react-native';
 import axios from 'axios';
-import {StackNavigator} from 'react-navigation'
+import { StackNavigator } from 'react-navigation';
 
 const apiUrl = 'https://dog.ceo/api/breeds/list/all'
 
@@ -16,6 +16,7 @@ class Breeds extends Component{
         }
     }
     async componentDidMount(){
+        console.log(this.props)
         try{
             let response = await axios.get(`${apiUrl}`)
             let breeds = response.data.message;
@@ -26,8 +27,14 @@ class Breeds extends Component{
             console.log(error)
         }
     }
-    loadSubreeds = () => {
-        
+    loadSubbreeds = async (item) => {
+        try{
+            await AsyncStorage.setItem('Subbreeds', JSON.stringify(this.state.breeds[item]))
+        } catch (error){
+            console.log(error)
+        }
+        console.log(`My props are ${this.props}`)
+        this.props.navigation.navigate('Subbreeds');
     }
    
 
@@ -40,7 +47,7 @@ class Breeds extends Component{
                     keyExtractor={(item) => item}
                     renderItem={({item}) => {
                         if(this.state.breeds[item].length){
-                            return <TouchableOpacity onPress={() => alert('Pressed')}>
+                            return <TouchableOpacity onPress={() => this.loadSubbreeds(item)}>
                                      <Text style={Hyperlinktext}>{item}</Text>
                                 </TouchableOpacity>  
                         } else {
