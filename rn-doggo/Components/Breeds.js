@@ -14,7 +14,7 @@ class Breeds extends Component {
 
 
     showBreeds = () => {
-        axios.get(`${URL}`, )
+        axios.get(`${URL}`, parameters)
             .then(response => {
                 const { message } = response.data;
                 this.setState({ data: message });
@@ -37,8 +37,6 @@ class Breeds extends Component {
     renderItem = ({ item }) => (
         <MyListItem
             id={item.id}
-            onPressItem={this._onPressItem}
-            selected={!!this.state.selected.get(item.id)}
             title={item.title}
         />
     );
@@ -47,7 +45,8 @@ class Breeds extends Component {
         return (
             <View style={{ padding: 10 }}>
                 <Text style={heading}>Dog Breeds</Text>
-                <FlatList data={this.state.deals} style={{ flex: 1, padding: 10 }} extraData={this.state} keyExtractor={this.keyExtractor} renderItem={this.renderItem} />
+                <FlatList data={this.state.data} style={{ flex: 1, padding: 10 }} extraData={this.state} keyExtractor={this.keyExtractor}
+                    renderItem={this.renderitem} />
 
             </View>
         );
