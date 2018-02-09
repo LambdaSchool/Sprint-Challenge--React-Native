@@ -1,7 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, FlatList, ScrollView } from 'react-native';
 import axios from 'axios';
-
+const renderIf = (condition, content) => {
+  if (condition) {
+    return content
+  } else {
+    return null
+  }
+}
 export default class App extends React.Component {
   constructor() {
     super() 
@@ -26,11 +32,10 @@ export default class App extends React.Component {
     })
 }
   componentWillUpdate() {
-    if(!this.state.listofDogs.length === 0 ){
+    if(this.state.listofDogs.length !== 0 ){
       return true
-      this.listOfStuff()
+     this.listOfStuff
     }
-    
   }
   listOfStuff() {
     const { listofDogs } = this.state
@@ -61,7 +66,17 @@ export default class App extends React.Component {
         <Button title="all" onPress={this.getAll}/>
         <Button title="console.log state" onPress={this.whatsInState}/>
          <View>
-         {this.listOfStuff()}
+         {renderIf(this.state.listofDogs.length !== 0,
+            <ScrollView>
+            <FlatList data={listofDogs}
+                      keyExtractor={(item, index) => item + index}
+                      renderItem={({item, index})=> {
+                        return <Text>{item}</Text>
+                      }}
+          />
+         </ScrollView>
+            
+            )}{this.listOfStuff()}
         </View>
       </View>
     );
