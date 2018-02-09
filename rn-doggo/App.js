@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Button, FlatList, ScrollView } from 'react-native';
 import axios from 'axios';
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props) 
+  constructor() {
+    super() 
       this.state = {
         listofDogs: []
       }
@@ -25,12 +25,34 @@ export default class App extends React.Component {
       console.log(error)
     })
 }
-
+  componentWillUpdate() {
+    if(!this.state.listofDogs.length === 0 ){
+      return true
+      this.listOfStuff()
+    }
+    
+  }
+  listOfStuff() {
+    const { listofDogs } = this.state
+    return (
+      <ScrollView>
+            <FlatList data={listofDogs}
+                      keyExtractor={(item, index) => item + index}
+                      renderItem={({item, index})=> {
+                        return <Text>{item}</Text>
+                      }}
+          />
+         </ScrollView>
+    )
+  }
+  
   whatsInState() {
     console.log('This is state',this.state.listofDogs)
   }
 
   render() {
+    const { listofDogs } = this.state
+    console.log(listofDogs)
     return (
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
@@ -38,15 +60,9 @@ export default class App extends React.Component {
         <Text>Shake your phone to open the developer menu.</Text>
         <Button title="all" onPress={this.getAll}/>
         <Button title="console.log state" onPress={this.whatsInState}/>
-          <FlatList 
-          data={this.state.listofDogs}
-          extraData={this.state}
-          renderItem={({ item}) => (
-            <ListItem
-              title={item}/>
-          )}
-            />
-        
+         <View>
+         {this.listOfStuff()}
+        </View>
       </View>
     );
   }
@@ -54,6 +70,7 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 200,
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
