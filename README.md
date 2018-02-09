@@ -11,7 +11,7 @@
 
 ## Project Initialization
 * Run `create-react-native-app rn-doggo`
-* Run `npm install --save axios react-navigatoin(for use in stretch problem)` || `yarn add axios` to install axios for use with fetching data.
+* Run `npm install --save axios react-navigation(for use in stretch problem)` || `yarn add axios` to install axios for use with fetching data.
 
 ## Project
 * You will be writing a simple app that makes a GET request to https://dog.ceo/api/breeds/list/all and lists all the breed names of dogs. 
