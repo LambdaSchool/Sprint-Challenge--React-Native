@@ -28,6 +28,12 @@ export default class Breeds extends Component {
             })
     }
 
+    handleSubBreeds = (subBreed) => {
+        console.log(subBreed);
+        // this.props.navigation.setParams({ subBreed });
+        this.props.navigation.navigate('SubBreeds', { subBreed });
+    }
+
     render() {
         return (
             <View style={Styles.container}>
@@ -36,7 +42,17 @@ export default class Breeds extends Component {
                     <FlatList
                         keyExtractor={this.keyExtractor}
                         data={this.state.breeds}
-                        renderItem={({ item }) => <Text style={Styles.listText}>{item}</Text>}
+                        renderItem={({ item }) => {
+                            return (
+                                <Text
+                                    style={Styles.listText}
+                                    name={item}
+                                    onPress={() => { this.handleSubBreeds(item) }}
+                                >
+                                    {item}
+                                </Text>
+                            );
+                        }}
                     />
                 </ScrollView>
             </View>
