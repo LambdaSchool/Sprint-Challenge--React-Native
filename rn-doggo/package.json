@@ -1,5 +1,5 @@
 {
-  "name": "rn-jwt",
+  "name": "rn-doggo",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -19,8 +19,10 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "expo": "^25.0.0",
     "react": "16.2.0",
-    "react-native": "0.52.0"
+    "react-native": "0.52.0",
+    "react-navigation": "^1.0.3"
   }
 }
