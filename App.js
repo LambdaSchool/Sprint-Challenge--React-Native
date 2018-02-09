@@ -7,6 +7,7 @@
 // to refresh (https://dev-blog.apollodata.com/loading-data-into-react-natives-flatlist-9646fa9a199b)
 
 // see also http://technoetics.in/simple-flatlist-example-react-native/?utm_source=hashnode.com
+// lambda soluton `https://youtu.be/YvOTd6o9XgM`
 
 import React, { Component } from 'react';
 import { Flatlist, StyleSheet, Text, View } from 'react-native';
