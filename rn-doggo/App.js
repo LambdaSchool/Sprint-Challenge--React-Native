@@ -1,13 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
+import { StackNavigator } from 'react-navigation';
+import axios from 'axios';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+        <Text style={styles.header}>Doggos Galore!</Text>
       </View>
     );
   }
@@ -17,7 +17,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
+  header: {
+    flex: 2,
+    fontSize: 28,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 20,
+    marginLeft: 80,
+  },
+
 });
