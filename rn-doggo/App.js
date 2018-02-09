@@ -9,11 +9,11 @@ const Home = props => {
     <View style={container}>
       <Text>Welcome to Puppy v. Puppy</Text>
       <Text>It's Sort of Like Tinder, But You Vote on Cute Doggos</Text>
-      <TouchableOpacity onPress={() => props.navigation.navigate('breeds')}>
-        <Text>See All Dog Breeds</Text>
+      <TouchableOpacity onPress={() => props.navigation.navigate('breeds')} style={button}>
+        <Text style={centeredText}>See All Dog Breeds</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => props.navigation.navigate('voting')}>
-        <Text>Vote On Cute Doggos</Text>
+      <TouchableOpacity onPress={() => props.navigation.navigate('voting')} style={button}>
+        <Text style={centeredText}>Vote On Cute Doggos</Text>
       </TouchableOpacity>
     </View>
   );
@@ -26,8 +26,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  button: {
+    height: 48,
+    padding: 10,
+    margin: 10,
+    width: 300,
+    backgroundColor: '#f3f3f3',
+  },
+  centeredText: {  
+    textAlign: 'center',
+  },
 });
-const { container } = styles;
+const { container, button, centeredText } = styles;
 
 const Routes = StackNavigator({
   home: { screen: Home },
