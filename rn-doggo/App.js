@@ -1,12 +1,14 @@
-import React from { Component }'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 
-export default class App extends Component {
+export default class Dogs extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
+        <Text>Welcome to the Dog Show</Text>
+
+        <Text></Text>
         <Text>Shake your phone to open the developer menu.</Text>
       </View>
     );
