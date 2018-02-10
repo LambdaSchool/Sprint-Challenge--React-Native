@@ -10,15 +10,15 @@ class Breeds extends Component {
             data: [],
             error: null,
         };
+        this.showBreeds();
     }
 
 
     showBreeds = () => {
-        axios.get(`${URL}`, parameters)
+        axios.get(`${URL}`)
             .then(response => {
                 const { message } = response.data;
-                this.setState({ data: message });
-                console.log('this.state.data', this.state.data);
+                this.setState({ data: Object.keys(message) });
             })
             .catch(error => {
                 console.log(error);
@@ -32,21 +32,20 @@ class Breeds extends Component {
 
     };
 
-    keyExtractor = (item, index) => item.id;
+    keyExtractor = (item, index) => index;
 
     renderItem = ({ item }) => (
-        <MyListItem
-            id={item.id}
-            title={item.title}
-        />
+        <Text key={item.id}>{item}</Text>
     );
 
     render() {
+        console.log('render this.state.data', this.state.data);
+
         return (
             <View style={{ padding: 10 }}>
                 <Text style={heading}>Dog Breeds</Text>
-                <FlatList data={this.state.data} style={{ flex: 1, padding: 10 }} extraData={this.state} keyExtractor={this.keyExtractor}
-                    renderItem={this.renderitem} />
+                <FlatList data={this.state.data} style={flatList} extraData={this.state} keyExtractor={this.keyExtractor}
+                    renderItem={this.renderItem} />
 
             </View>
         );
@@ -57,10 +56,13 @@ const styles = StyleSheet.create({
     heading: {
         margin: 30,
         fontSize: 20
+    },
+    flatList: {
+        padding: 5
     }
 })
 
-const { heading } = styles;
+const { heading, flatList } = styles;
 
 export default Breeds;
 
