@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, FlatList, AsyncStorage } from 'react-native';
 import axios from 'axios';
-import HyperLink from 'react-native-hyperlink';
 
 const api = `https://dog.ceo/api/breeds/list/all`;
 
